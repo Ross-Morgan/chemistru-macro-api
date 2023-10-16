@@ -27,5 +27,5 @@ fn generate_const_init(element: &RawElement) -> proc_macro2::TokenStream {
     let proton_number = element.number;
     let mass_number = element.atomic_mass;
 
-    quote! { pub const #assignment_name: chemistru_elements::Element::new(#name, #symbol, #mass_number, #proton_number); }
+    quote! { pub const #assignment_name: chemistru_elements::element::Element = chemistru_elements::element::Element::new(#name, #symbol, #mass_number, #proton_number); }
 }
