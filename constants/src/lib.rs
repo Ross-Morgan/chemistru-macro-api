@@ -11,7 +11,7 @@ static DATA: &str = include_str!("../../periodic-table-data/periodic-table.json"
 pub fn elements_consts(_: TokenStream) -> TokenStream {
     let elements: Vec<RawElement> = serde_json::from_str(DATA).unwrap();
 
-    let elements_init = elements.iter().map(generate_const_init);
+    let elements_init = elements.into_iter().map(generate_const_init);
 
     let tokens = quote! {
         #( #elements_init )*
@@ -20,12 +20,14 @@ pub fn elements_consts(_: TokenStream) -> TokenStream {
     TokenStream::from(tokens)
 }
 
-fn generate_const_init(element: &RawElement) -> proc_macro2::TokenStream {
+fn generate_const_init(element: RawElement) -> proc_macro2::TokenStream {
     let assignment_name = proc_macro2::Ident::new(&element.name.to_uppercase().replace(' ', "_"), proc_macro2::Span::call_site());
-    let name = element.name.as_str();
-    let symbol = element.symbol.as_str();
+    let name = element.name;
+    let symbol = element.symbol;
     let proton_number = element.number;
     let mass_number = element.atomic_mass;
 
-    quote! { pub const #assignment_name: chemistru_elements::element::Element = chemistru_elements::element::Element::new(#name, #symbol, #mass_number, #proton_number); }
+    let inner = element.into_inner();
+
+    quote! { pub const #assignment_name: chemistru_elements::element::Element = chemistru_elements::element::Element::new(#name, #symbol, #mass_number, #proton_number, #inner); }
 }

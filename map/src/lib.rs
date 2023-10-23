@@ -29,8 +29,8 @@ fn init_all_elements(elements: &[RawElement]) -> Vec<proc_macro2::TokenStream> {
     let mut quote_buf = vec![];
     
     for element in elements {
-        let name = element.name.as_str();
-        let symbol = element.symbol.as_str();
+        let name = element.name;
+        let symbol = element.symbol;
         let proton_number = element.number;
         let mass_number = element.atomic_mass;
 
