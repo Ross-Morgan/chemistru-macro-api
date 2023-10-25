@@ -9,7 +9,7 @@ static DATA: &str = include_str!("../../periodic-table-data/periodic-table.json"
 
 #[proc_macro]
 pub fn elements_consts(_: TokenStream) -> TokenStream {
-    let elements: Vec<RawElement> = serde_json::from_str(DATA).unwrap();
+    let elements: Vec<RawElement> = serde_json::from_str(DATA).expect("Failed to load elements");
 
     let elements_init = elements.into_iter().map(generate_const_init);
 
@@ -29,5 +29,14 @@ fn generate_const_init(element: RawElement) -> proc_macro2::TokenStream {
 
     let inner = element.into_inner();
 
-    quote! { pub const #assignment_name: chemistru_elements::element::Element = chemistru_elements::element::Element::new(#name, #symbol, #mass_number, #proton_number, #inner); }
+    quote! {
+        pub const #assignment_name: chemistru_elements::element::Element = chemistru_elements::element::Element::new(
+            #name,
+            #symbol,
+            #mass_number,
+            #proton_number,
+            #inner
+        );
+    }
 }
+ 

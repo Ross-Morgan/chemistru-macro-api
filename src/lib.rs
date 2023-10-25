@@ -5,13 +5,12 @@ macro_rules! element {
     };
 }
 
-
 pub mod elements {
     constants::elements_consts!();
     map::element_map!();
 }
 
 pub mod prelude {
-    pub use super::elements::*;
     pub use super::element;
+    pub use super::elements::*;
 }
