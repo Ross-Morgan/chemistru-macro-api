@@ -9,11 +9,7 @@ edition = "2021"
 proc-macro = true
 
 [dependencies]
-<<<<<<< HEAD
 chemistru-elements = "0.4.4"
-=======
-chemistru-elements = "0.4.0"
->>>>>>> 1aba2e79d363ae4fcfbfa364fb15dcae5e7b73cd
 proc-macro2 = "1.0.69"
 quote = "1.0.33"
 serde_json = { version = "1.0.107", features = ["preserve_order"] }
