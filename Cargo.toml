@@ -6,6 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+<<<<<<< HEAD
+=======
+chemistru-elements = "0.4.0"
+>>>>>>> 1aba2e79d363ae4fcfbfa364fb15dcae5e7b73cd
 constants = { path = "./constants" }
 map = { path = "./map" }
 phf = { version = "0.11.2", features = ["macros"] }
