@@ -39,4 +39,3 @@ fn generate_const_init(element: RawElement) -> proc_macro2::TokenStream {
         );
     }
 }
- 

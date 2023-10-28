@@ -33,8 +33,9 @@ fn init_all_elements(elements: &[RawElement]) -> Vec<proc_macro2::TokenStream> {
         let symbol = element.symbol;
         let proton_number = element.number;
         let mass_number = element.atomic_mass;
+        let inner = element.clone().into_inner();
 
-        let stream = quote! { chemistru_elements::element::Element::new(#name, #symbol, #mass_number, #proton_number) };
+        let stream = quote! { chemistru_elements::element::Element::new(#name, #symbol, #mass_number, #proton_number, #inner) };
 
         quote_buf.push(stream);
     }
