@@ -5,7 +5,7 @@ use quote::quote;
 
 use chemistru_elements::raw::RawElement;
 
-static DATA: &str = include_str!("../../periodic-table-data/periodic-table.json");
+static DATA: &str = include_str!("../periodic-table-data/periodic-table.json");
 
 #[proc_macro]
 pub fn element_map(_: TokenStream) -> TokenStream {
