@@ -7,6 +7,7 @@ macro_rules! element {
 
 pub mod elements {
     constants::elements_consts!();
+    map::element_map!();
 }
 
 pub mod prelude {
