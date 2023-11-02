@@ -7,8 +7,7 @@ edition = "2021"
 
 [dependencies]
 chemistru-elements = "0.5.0"
-
-constants = { path = "./constants" }
-map = { path = "./map" }
+chemistru-macro-constants = "0.1.0"
+chemistru-macro-map = "0.1.0"
 
 phf = { version = "0.11.2", features = ["macros"] }

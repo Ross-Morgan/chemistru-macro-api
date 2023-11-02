@@ -1,3 +1,6 @@
+use chemistru_macro_constants as constants;
+use chemistru_macro_map as map;
+
 #[macro_export]
 macro_rules! element {
     ($mass:literal) => {
@@ -6,8 +9,8 @@ macro_rules! element {
 }
 
 pub mod elements {
-    constants::elements_consts!();
-    map::element_map!();
+    super::constants::elements_consts!();
+    super::map::element_map!();
 }
 
 pub mod prelude {
